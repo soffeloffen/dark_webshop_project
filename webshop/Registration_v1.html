@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <h1>Sign in to your account</h1>
+    <link rel="stylesheet" href="LayoutRegister.css" />
+  </head>
+  <body style="background-color: #646666">
+
+    
+
+    <div class="center">
+      <form action="RegistrationComplete_v1.html">
+        <table>
+            <label for="fname">First Name:</label><br />
+            <input type="”text”" id="fname" name="fname"/><br/>
+            <label for="lname">Last Name:</label><br />
+            <input type="”text”" id="lname" name="lname"/><br/>
+        <input class="button1 button"
+          type="submit"
+          onclick="store()"
+          value="save"
+        />
+      </form>
+    </div>
+
+    <script type="text/javascript">
+      function store() {
+        //get firstname
+        let inputFname = document.getElementById("fname");
+        //save firstname
+        localStorage.setItem("fname", inputFname.value);
+        //get lastname
+        let inputLname = document.getElementById("lname");
+        //save last name
+        localStorage.setItem("lname", inputLname.value);
+      }
+    </script>
+  </body>
+</html>

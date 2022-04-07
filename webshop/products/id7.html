@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../LayoutMenu.css" />
+  <script src="../basketStats.js"></script>
+</head>
+<body>
+
+
+  <div class="container">
+    <div class="navbar">
+      <a href="../Welcome_v1.html">Home</a>
+      <a href="../Basket_v1.html">Basket</a>
+      <a href="../ItemsOverview_v1.html">Dark Products</a>
+      <div class="move-right">
+        <a href="../Registration_v1.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+<h2 style="text-align:center">Product Card</h2>
+<!--- <a href="#" onclick="my_func()" >click</a> -->
+
+<img class="demo cursor" src="../images/fake_id7.jpeg" style="height: 400px ;width: 400px;"></td>
+
+
+  <h1>Austria Passport</h1>
+  <p class="price">$5099.99</p>
+  <p> Due to the crisis in Ukraine, we have a discount for all Ukranians of 2 for 1. </p>
+  <p>Note: We do not have a refund guarantee, and do not take any responsibility for any illegal actions by use.
+    The quality is the best in the market, and has won the Best Fake IDs Dark Award three years in a row.</p>
+</div>
+
+<script>
+  function setProduct(){
+    sessionStorage.setItem( "Id7Name", "Austria Passport" );
+    sessionStorage.setItem( "Id7Amount", 1);
+    }
+
+    function plusProduct(){
+    var total = parseInt(sessionStorage.getItem( "Id7Amount" ) );
+    var updatedTotal = total +1;
+    sessionStorage.setItem( "Id7Amount", updatedTotal ); 
+    }
+
+    function minusProduct(){
+    var total = parseInt(sessionStorage.getItem( "Id7Amount" ) );
+    var updatedTotal = total -1;
+    sessionStorage.setItem( "Id7Amount", updatedTotal ); 
+    }
+</script>
+
+<button onclick="setProduct()">Save to Basket</button>
+<button onclick="plusProduct()">+1 to Basket</button>
+<button onclick="minusProduct()">-1 from Basket</button>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../LayoutMenu.css" />
+  <script src="../basketStats.js"></script>
+</head>
+<body>
+
+
+  <div class="container">
+    <div class="navbar">
+      <a href="../Welcome_v1.html">Home</a>
+      <a href="../Basket_v1.html">Basket</a>
+      <a href="../ItemsOverview_v1.html">Dark Products</a>
+      <div class="move-right">
+        <a href="../Registration_v1.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+
+<h2 style="text-align:center">Product Card</h2>
+<!--- <a href="#" onclick="my_func()" >click</a> -->
+
+<img class="demo cursor" src="../images/drug3.png" style="height: 400px ;width: 400px;"></td>
+
+
+  <h1>LSD</h1>
+  <p class="price">$12</p>
+  <p>LSD also known colloquially as acid, is a psychedelic drug.
+    Effects typically include intensified thoughts, emotions, and sensory perception. 
+    At sufficiently high dosages LSD manifests primarily visual, as well as auditory, hallucinations.</p>
+</div>
+  <!-- reusable script for all products-->
+  <script>
+    function setProduct(){
+      sessionStorage.setItem( "Drug3Name", "LSD" );
+      sessionStorage.setItem( "Drug3Amount", 1);
+      }
+
+      function plusProduct(){
+      var total = parseInt(sessionStorage.getItem( "Drug3Amount" ) );
+      var updatedTotal = total +1;
+      sessionStorage.setItem( "Drug3Amount", updatedTotal ); 
+      }
+
+      function minusProduct(){
+      var total = parseInt(sessionStorage.getItem( "Drug3Amount" ) );
+      var updatedTotal = total -1;
+      sessionStorage.setItem( "Drug3Amount", updatedTotal ); 
+      }
+  </script>
+
+  <button onclick="setProduct()">Save to Basket</button>
+  <button onclick="plusProduct()">+1 to Basket</button>
+  <button onclick="minusProduct()">-1 from Basket</button>
+
+
+
+</body>
+</html>

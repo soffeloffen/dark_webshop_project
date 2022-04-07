@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../LayoutMenu.css" />
+  <script src="../basketStats.js"></script>
+</head>
+<body>
+
+
+  <div class="container">
+    <div class="navbar">
+      <a href="../Welcome_v1.html">Home</a>
+      <a href="../Basket_v1.html">Basket</a>
+      <a href="../ItemsOverview_v1.html">Dark Products</a>
+      <div class="move-right">
+        <a href="../Registration_v1.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+<h2 style="text-align:center">Product Card</h2>
+<!--- <a href="#" onclick="my_func()" >click</a> -->
+
+<img class="demo cursor" src="../images/drug5.png" style="height: 400px ;width: 400px;"></td>
+
+
+  <h1>Hash Brownies</h1>
+  <p class="price">$39.99 for a cake & 3.99 a piece</p>
+  <p>These delicious hash brownies have large quantities of weed, and is similar cake made using cannabis as an ingredient, eaten for its psychoactive effects. </p>
+</div>
+
+<script>
+  function setProduct(){
+    sessionStorage.setItem( "Drug5Name", "HashBrownies" );
+    sessionStorage.setItem( "Drug5Amount", 1);
+    }
+
+    function plusProduct(){
+    var total = parseInt(sessionStorage.getItem( "Drug5Amount" ) );
+    var updatedTotal = total +1;
+    sessionStorage.setItem( "Drug5Amount", updatedTotal ); 
+    }
+
+    function minusProduct(){
+    var total = parseInt(sessionStorage.getItem( "Drug5Amount" ) );
+    var updatedTotal = total -1;
+    sessionStorage.setItem( "Drug5Amount", updatedTotal ); 
+    }
+</script>
+
+<button onclick="setProduct()">Save to Basket</button>
+<button onclick="plusProduct()">+1 to Basket</button>
+<button onclick="minusProduct()">-1 from Basket</button>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome page</title>
+    <link rel="stylesheet" href="LayoutWelcome.css" />
+    <link rel="stylesheet" href="LayoutMenu.css" />
+  </head>
+
+  <body style="background-color: #646666">
+    <div class="navbar">
+      <a href="Welcome_v1.html">Home</a>
+      <a href="Basket_v1.html">Basket</a>
+      <a href="ItemsOverview_v1.html">Dark Products</a>
+
+      <div class="move-right">
+        <a href="Registration_v1.html">Sign in</a>
+      </div>
+    </div>
+
+    <div class="flexbox-container header">
+      <h1>Welcome to the Dark Web</h1>
+    </div>
+
+    <h2 class="LatestOffersHeader">Latest Offers</h2>
+
+    <div class="flexbox-container">
+      <a href="products/drug1.html"> <img src="images/drug1.png" style="height: 250px ;width: 250px;" alt="img1" /></a> 
+      <a href="products/id2.html"><img src="images/fake_id2.jpeg"style="height: 250px ;width: 250px;" alt="img2" /></a> 
+      <a href="products/drug5.html"><img src="images/drug5.png" style="height: 250px ;width: 250px;" alt="img3" /> </a>
+      <a href="products/id10.html"><img src="images/fake_id10.jpeg" style="height: 250px ;width: 250px;" alt="img4" /> </a>
+    </div>
+  </body>
+
+  <script>
+    document.body.onload = addUserName();
+    function addUserName() {
+      const userName = localStorage.fname;
+      if (userName !== undefined) {
+        document.getElementById("firstname").innerHTML = userName;
+      }
+    }
+  </script>
+</html>
