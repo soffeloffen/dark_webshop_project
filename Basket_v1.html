@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Basket</title>
+    <link rel="stylesheet" href="Layout.css" />
+    <link rel="stylesheet" href="LayoutMenu.css" />
+    <link rel="stylesheet" href="LayoutWelcome.css" />
+    <script src="basketStats.js"></script>
+
+  </head>
+  <body style="background-color: #646666">
+    
+    <!--- Navigation Bar | Component-->
+    <div class="navbar">
+      <a href="Welcome_v1.html">Home</a>
+      <a href="Basket_v1.html">Basket</a>
+      <a href="ItemsOverview_v1.html">Dark Products</a>
+      <div class="userNameInMenu">
+        <b id="firstname"></b>
+      </div>
+    </div>
+
+    <a href="ItemsOverview_v1.html">Go back to all products</a>
+
+    <h1>BASKET</h1>
+    <h3 id="item1">  </h3>
+    <h3 id="item2"> </h3>
+    <h3 id="item3"> </h3>
+    <h3 id="item4">  </h3>
+    <h3 id="item5">  </h3>
+    <h3 id="item6">  </h3>
+    <h3 id="id1">  </h3>
+    <h3 id="id2">  </h3>
+    <h3 id="id3">  </h3>
+    <h3 id="id4">  </h3>
+    <h3 id="id5">  </h3>
+    <h3 id="id6">  </h3>
+    <h3 id="id7">  </h3>
+    <h3 id="id8">  </h3>
+    <h3 id="id9">  </h3>
+    <h3 id="id10">  </h3>
+    <h3 id="id11">  </h3>
+
+    <script>
+      document.body.onload = showBasket();
+      function showBasket() {
+      
+      var drug1 = sessionStorage.Drug1Name + ' - Amount: ' + sessionStorage.Drug1Amount;
+      var drug2 = sessionStorage.Drug2Name + ' - Amount: ' + sessionStorage.Drug2Amount;
+      var drug3 = sessionStorage.Drug3Name + ' - Amount: ' + sessionStorage.Drug3Amount;
+      var drug4 = sessionStorage.Drug4Name + ' - Amount: ' + sessionStorage.Drug4Amount;
+      var drug5 = sessionStorage.Drug5Name + ' - Amount: ' + sessionStorage.Drug5Amount;
+      var drug6 = sessionStorage.Drug6Name + ' - Amount: ' + sessionStorage.Drug6Amount;
+
+      var id1 = sessionStorage.Id1Name + ' - Amount: ' + sessionStorage.Id1Amount;
+      var id2 = sessionStorage.Id2Name + ' - Amount: ' + sessionStorage.Id2Amount;
+      var id3 = sessionStorage.Id3Name + ' - Amount: ' + sessionStorage.Id3Amount;
+      var id4 = sessionStorage.Id4Name + ' - Amount: ' + sessionStorage.Id4Amount;
+      var id5 = sessionStorage.Id5Name + ' - Amount: ' + sessionStorage.Id5Amount;
+      var id6 = sessionStorage.Id6Name + ' - Amount: ' + sessionStorage.Id6Amount;
+      var id7 = sessionStorage.Id7Name + ' - Amount: ' + sessionStorage.Id7Amount;
+      var id8 = sessionStorage.Id8Name + ' - Amount: ' + sessionStorage.Id8Amount;
+      var id9 = sessionStorage.Id9Name + ' - Amount: ' + sessionStorage.Id9Amount;
+      var id10 = sessionStorage.Id10Name + ' - Amount: ' + sessionStorage.Id10Amount;
+      var id11 = sessionStorage.Id11Name + ' - Amount: ' + sessionStorage.Id11Amount;
+
+
+      document.getElementById('item1').innerHTML = drug1 
+      document.getElementById('item2').innerHTML = drug2
+      document.getElementById('item3').innerHTML = drug3 
+      document.getElementById('item4').innerHTML = drug4
+      document.getElementById('item5').innerHTML = drug5 
+      document.getElementById('item6').innerHTML = drug6
+
+      document.getElementById('id1').innerHTML = id1 
+      document.getElementById('id2').innerHTML = id2
+      document.getElementById('id3').innerHTML = id3 
+      document.getElementById('id4').innerHTML = id4 
+      document.getElementById('id5').innerHTML = id5 
+      document.getElementById('id6').innerHTML = id6 
+      document.getElementById('id7').innerHTML = id7 
+      document.getElementById('id8').innerHTML = id8   
+      document.getElementById('id9').innerHTML = id9 
+      document.getElementById('id10').innerHTML = id10 
+      document.getElementById('id11').innerHTML = id11
+
+      }
+    </script>
+
+<button onclick="emptyBasket()">EMPTY BASKET</button>
+
+<script>
+  function emptyBasket(){
+    sessionStorage.clear()
+    location.reload();
+
+}
+</script>
+  </body>
+ 
+
+
+
+</html>
