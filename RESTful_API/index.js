@@ -1,5 +1,7 @@
-import express from "express";
+//run server in terminal: cd to location, run: node index.js 
+//in browser: go to localhost:3000
 
+const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000; //if no port is given choose 3000
 
