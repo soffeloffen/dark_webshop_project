@@ -1,4 +1,4 @@
-//run server in terminal: cd to location, run: node index.js 
+//run server in terminal: cd to project folder, run: node index.js 
 //in browser: go to localhost:3000
 
 const express = require("express");
