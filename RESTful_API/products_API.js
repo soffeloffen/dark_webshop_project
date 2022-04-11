@@ -18,13 +18,13 @@ app1.listen(port, function(err) {
 }); 
 
 /*Get all passport products*/ 
-app.get('WRITE PATH TO PRODUCTS', (req, res) => {
+app1.get('WRITE PATH TO PRODUCTS', (req, res) => {
     res.send(reg.params);
     res.send(passportProduct); //example below - must specify path
 });
 
 /*Get all drugs products*/ 
-app.get('WRITE PATH TO PRODUCTS', (req, res) => {
+app1.get('WRITE PATH TO PRODUCTS', (req, res) => {
     res.send(reg.params);
     res.send(drug_products); //example below - must specify path
 });
