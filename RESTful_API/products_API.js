@@ -6,7 +6,7 @@ import cors from "cors";
  * 
 */
 const express = require("express");
-const app = express();
+const app1 = express();
 const port = process.env.PORT || 3000; //if no port is given choose 3000
 
 app1.get("/", (req, res) => res.send("Server_2: Products"));
