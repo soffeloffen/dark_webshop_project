@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <script src="js/items.js"></script>
+        <script src="js/test.js"></script>
+        <link rel="stylesheet" href="style/LayoutMenu.css" />
+        <link rel="stylesheet" href="style/LayoutWelcome.css" />
+        <link rel="stylesheet" href="style/products.css" />
+    </head>
+<body style="background-color: #646666">
+
+<!--- Navigation Bar | Component-->
+<div class="navbar">
+<a href="Welcome_v1.html">Home</a>
+<a href="Basket_v1.html">Basket</a>
+<a href="ItemsOverview_v1.html">Dark Products</a>
+<div class="userNameInMenu">
+  <b id="firstname"></b>
+</div>
+</div>
+<!-- Next and previous buttons 
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+-->
+
+<!-- Image text -->
+<div class="caption-container">
+<p id="caption"></p>
+</div>
+<!-- <button onclick="myFunction2()">Show/hide Fake IDs </button>
+<button onclick="myFunction3()">Show/hide EU Fake IDs</button>
+<button onclick="myFunction1()">Show/hide Drugs </button>
+<button onclick="myFunction4()">Show/hide Plant Based </button>
+<button onclick="getAllProducts()">Show me some products yo</button> -->
+
+<div id="filters">
+
+</div>
+
+<h1>All Products Div approach</h1>
+<div id="products"></div>
+
+<h1>All Products</h1>
+<table id="allProducts"></table>
+
+<h1>Product types</h1>
+<div id="productTypes"></div> 
+
+<div id=drugss style="overflow-x:auto;">
+<table id="myTable1">
+<h1 class="title">Browse through drugs</h1>
+<tr>
+  <td><img class="demo cursor" src="images/drug1.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug1.html';" ></td>
+  <td><img class="demo cursor"  src="images/drug2.png" style="height: 200px ;width: 200px;"  onclick="window.location.href='products/drug2.html';" ></td>
+  <td><img class="demo cursor"  src="images/drug3.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug3.html';" ></td>
+  <td><img class="demo cursor"  src="images/drug4.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug4.html';" ></td>
+  <td><img class="demo cursor"  src="images/drug5.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug5.html';" ></td>
+  <td><img class="demo cursor"  src="images/drug6.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug6.html';" ></td>
+</tr>
+</table>
+</div>
+
+<div id=idss style="overflow-x:auto;">
+<table id="myTable">
+  <h1 class="title"> Browse through fake IDs</h1>
+<tr>
+  <td><img class="demo cursor"  src="images/fake_id1.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id1.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id2.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id2.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id3.jpg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id3.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id4.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id4.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id5.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id5.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id6.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id6.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id7.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id7.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id8.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id8.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id9.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id9.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id10.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id10.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id11.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id11.html';" ></td>
+
+  <!--<td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/robin.jpg" alt="Robin" onclick="window.location.href='lost.html';"></td>
+  <td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/wood pecker.jpg" alt="Wood pecker" onclick="window.location.href='lost.html';"></td>
+  --></tr>
+</table>
+</div>
+</div>
+
+<div id=EUpass style="overflow-x:auto;">
+<table id="tablee">
+<h1 class="title"> Browse through fake EU IDs</h1>
+<tr>
+  <td><img class="demo cursor"  src="images/fake_id2.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id2.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id3.jpg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id3.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id5.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id5.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id7.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id7.html';" ></td>
+<td><img class="demo cursor"  src="images/fake_id11.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id11.html';" ></td>
+<td><img class="demo cursor"  src="images/fake_id8.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id8.html';" ></td>
+  <td><img class="demo cursor"  src="images/fake_id9.jpeg" style="height: 200px ;width: 200px;" onclick="window.location.href='products/id9.html';" ></td>
+
+<!--<td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/robin.jpg" alt="Robin" onclick="window.location.href='lost.html';"></td>
+<td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/wood pecker.jpg" alt="Wood pecker" onclick="window.location.href='lost.html';"></td>
+--></tr>
+</table>
+</div>
+</div>
+
+<div id=plants style="overflow-x:auto;">
+<table id="tablee">
+<h1 class="title"> Browse through plants based drugs</h1>
+<tr>
+<td><img class="demo cursor" src="images/drug1.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug1.html';" ></td>
+<td><img class="demo cursor"  src="images/drug2.png" style="height: 200px ;width: 200px;"  onclick="window.location.href='products/drug2.html';" ></td>
+<td><img class="demo cursor"  src="images/drug4.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug4.html';" ></td>
+<td><img class="demo cursor"  src="images/drug5.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug5.html';" ></td>
+<!--<td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/robin.jpg" alt="Robin" onclick="window.location.href='lost.html';"></td>
+<td><img src="/Users/annesophieriis/Desktop/4th semSD/frameworks_exercises/BirdsQuiz/images/_3thirdTest/wood pecker.jpg" alt="Wood pecker" onclick="window.location.href='lost.html';"></td>
+--></tr>
+</table>
+</div>
+</div>
+
+</body>
+
+<script>
+
+document.body.onload = addUserName();
+document.body.onload = initializePage();
+
+function addUserName() {
+const userName = localStorage.fname;
+if (userName !== undefined) {
+  document.getElementById("firstname").innerHTML = userName;
+}
+}
+</script>
+</html>

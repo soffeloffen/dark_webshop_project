@@ -1,6 +1,3 @@
-import express from "express";
-import cors from "cors";
-
 /**
  * import { CustomersRouter } from "./customer/customer.route.js";
  *

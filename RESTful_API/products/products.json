@@ -97,7 +97,7 @@
          "measurement": "passport",
          "price": "1999.99",
          "currency": "USD",
-         "image": "images/id1.jpeg",
+         "image": "images/fake_id1.jpeg",
          "onsale": false
        },
        {

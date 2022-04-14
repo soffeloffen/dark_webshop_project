@@ -1,15 +1,23 @@
-import express from "express";
-import cors from "cors";
+// import express from "express";
+// import cors from "cors";
 
 /**
  * import { ProductsRouter } from "./products/products.route.js";
  *
  */
 const express = require("express");
+const cors = require("cors");
 const app1 = express();
+app1.use(cors());
 const port = process.env.PORT || 3000; //if no port is given choose 3000
 
+let Allproducts = require("./products/products.json");
+const { type } = require("express/lib/response");
+const { all } = require("express/lib/application");
+
 app1.get("/", (req, res) => res.send("Server_2: Products"));
+
+app1.get("/test", (req, res) => res.send("Testing"));
 
 //Invalid route statements
 app1.listen(port, function (err) {
@@ -17,36 +25,29 @@ app1.listen(port, function (err) {
   console.log(`server is listening on ${port}`);
 });
 
-/*Get all passport products*/
-app1.get("WRITE PATH TO PRODUCTS", (req, res) => {
-  res.send(reg.params);
-  res.send(passportProduct); //example below - must specify path
-});
-
-/*Get all drugs products*/
-app1.get("WRITE PATH TO PRODUCTS", (req, res) => {
-  res.send(reg.params);
-  res.send(drug_products); //example below - must specify path
-});
-
-const passportProduct = [
-  { id: 1, country: "Malta", price: 200 },
-  { id: 2, country: "UK", price: 9000 },
-];
-
-/*Get a specific product category*/
-app1.get("WRITE PATH TO CATEGORY IDs", (req, res) => {
-  res.send(req.params);
-  if (!category) res.status(404).send("Given ID is not valid");
-  res.send(category);
+//Products
+/*Get all products*/
+app1.get("/Products", (req, res) => {
+  res.send(Allproducts);
 });
 
 /* Get all product categories*/
-app1.get("PATH TO CATEGORIES", (req, res) => {
-  res.send(req.params);
-  if (!category) res.status(404).send("Categories not found");
-  res.send(category);
+app1.get("/products/types", (req, res) => {
+    var allTypes = Allproducts.products.map(x => x.type); //returns all types for each product 
+    var uniqueTypes = [...new Set(allTypes)];
+    res.send(uniqueTypes);
 });
+
+/*Get a specific product by category*/
+app1.get("/products/types/:typeId", (req, res) => {
+  const typeId = req.params.typeId;
+  if (!typeId) res.status(404).send("Given ID is not valid");
+  res.send(Allproducts.products.filter((x) => x.type == typeId));
+});
+
+
+
+//--------------------------------DOES NOT WORK--------------------------------------------------------------
 
 /* 
 Define a parameter such as id 
@@ -64,12 +65,4 @@ app1.get("/sale", (req, res) => {
   res.send(req.params);
   if (!product) res.status(404).send("There are no products on sale");
   res.send(product);
-});
-
-/*Create resource(product) */
-app1.post("/api/products", (req, res) => {
-  const product = {
-    id: courses.length + 1,
-    name: req.body.name,
-  };
 });
