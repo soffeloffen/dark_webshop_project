@@ -28,9 +28,11 @@
   </body>
 
   <script>
-    document.body.onload = addUserName();
-    document.body.onload = initializePage();
+//calls on function in productinfo.js, returns information for selected product by prodID
+  document.body.onload = initializePage();
 
+ //currently not used but maybe for later when user tracking basket?
+ document.body.onload = addUserName();
     function addUserName() {
       const userName = localStorage.fname;
       if (userName !== undefined) {

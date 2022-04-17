@@ -17,7 +17,8 @@ const { all } = require("express/lib/application");
 app1.use(express.static('webshop'))
 app1.get("/", (req, res) => res.send("Server_2: Products"));
 
-app1.get("/test", (req, res) => res.send("Testing"));
+//Not used?
+//app1.get("/test", (req, res) => res.send("Testing"));
 
 //goes to html page: ItemsOverview
 app1.get("/itemsoverview", (req, res) => res.sendFile("webshop/ItemsOverview_v1.html", {root: __dirname }));
@@ -45,14 +46,14 @@ app1.get("/products/types", (req, res) => {
     res.send(uniqueTypes);
 });
 
-/*Get a specific product by ID*/
+/*Get product by ID -- returns full .json script for specific prodId*/
 app1.get("/products/:prodId", (req, res) => {
   const prodId = req.params.prodId;
   if (!prodId) res.status(404).send("Given ID is not valid");
   res.send(Allproducts.products.filter((x) => x.id == prodId));
 });
 
-//render product id
+//Get ID -- returns one id to ProductInfo.html to process and visualise data
 app1.get("/item/:prodId", (req, res) =>  {
   const prodId = req.params.prodId;
   if (!prodId) res.status(404).send("Given ID is not valid");
