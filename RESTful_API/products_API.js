@@ -19,6 +19,9 @@ app1.get("/", (req, res) => res.send("Server_2: Products"));
 
 app1.get("/test", (req, res) => res.send("Testing"));
 
+app1.get("/itemsoverview", (req, res) => res.send("ItemsOverview_v1.html"));
+
+
 //Invalid route statements
 app1.listen(port, function (err) {
   if (err) console.log("error in server");
