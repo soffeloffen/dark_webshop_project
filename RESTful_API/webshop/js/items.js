@@ -4,7 +4,10 @@ function initializePage() {
   getAllProducts();
 }
 
-function getAllProducts() {
+//function itemInfo(){
+  //<a href="products/drug1.html"> <img src="images/drug1.png" style="height: 250px ;width: 250px;" alt="img1" /></a> 
+//}
+function getAllProducts(value) {
   //Call the backend (API) - make sure the server is running.
   //Fetch calls the endpoint and receives a response. Once we receive the response we format it as json.
   //Once the response is formatted, we can start working on the data.
@@ -16,22 +19,37 @@ function getAllProducts() {
       productsDiv.innerHTML = "";
 
       data.products.forEach((product) => {
+       
         let node = document.createElement("div");
 
         let title = document.createElement("h2");
         title.innerText = product.title;
 
-        let image = document.createElement("img");
-        image.src = product.image;
+        let a = document.createElement("a");
+        a.href = "/item/"+ product.id;
 
-        node.appendChild(image);
+        let image =document.createElement("img");
+        image.id = product.id;
+        image.src =product.image;
+        
+        a.appendChild(image);
+
+        //let button = document.createElement('button');
+        //button.innerHTML = 'click me';
+        //button.onclick = itemInfo();
+
+        node.appendChild(a);
         node.appendChild(title);
+        //node.appendChild(button);
 
         productsDiv.appendChild(node);
+
+        
       });
     });
 }
 
+//<img class="demo cursor" src="images/drug1.png" style="height: 200px ;width: 200px;" onclick="window.location.href='products/drug1.html';" >
 function getProductsByType(type) {
   fetch("http://localhost:3000/products/types/" + type)
     .then((response) => response.json())
@@ -55,8 +73,10 @@ function getProductsByType(type) {
         let image = document.createElement("img");
         image.src = product.image;
 
+  
         node.appendChild(image);
         node.appendChild(title);
+        //node.appendChild(button);
 
         productsDiv.appendChild(node);
       });

@@ -12,7 +12,7 @@
          "measurement": "grams",
          "price": "100",
          "currency": "USD",
-         "image": "images/drug1.png",
+         "image": "/images/drug1.png",
          "onsale": false
       },
 
@@ -27,7 +27,7 @@
          "measurement": "grams",
          "price": "6",
          "currency": "USD",
-         "image": "images/drug2.png",
+         "image": "/images/drug2.png",
          "onsale": false
       },
       {
@@ -41,7 +41,7 @@
          "measurement": "tabs",
          "price": "100",
          "currency": "USD",
-         "image": "images/drug3.png",
+         "image": "/images/drug3.png",
          "onsale": false
       },
       {
@@ -55,7 +55,7 @@
          "measurement": "pcs",
          "price": "5.99",
          "currency": "USD",
-         "image": "images/drug4.png",
+         "image": "/images/drug4.png",
          "onsale": false
       },
       {
@@ -69,7 +69,7 @@
          "measurement": "pcs",
          "price": "4.99",
          "currency": "USD",
-         "image": "images/drug5.png",
+         "image": "/images/drug5.png",
          "onsale": false
       },
       {
@@ -83,7 +83,7 @@
          "measurement": "bottle",
          "price": "27.50",
          "currency": "USD",
-         "image": "images/drug6.png",
+         "image": "/images/drug6.png",
          "onsale": false
       },
       {
@@ -97,7 +97,7 @@
          "measurement": "passport",
          "price": "1999.99",
          "currency": "USD",
-         "image": "images/fake_id1.jpeg",
+         "image": "/images/fake_id1.jpeg",
          "onsale": false
        },
        {
@@ -111,7 +111,7 @@
          "measurement": "passport",
          "price": "10,000.00",
          "currency": "USD",
-         "image": "images/fake_id2.jpeg",
+         "image": "/images/fake_id2.jpeg",
          "onsale": false
        },{
          "amount": 0,
@@ -124,7 +124,7 @@
          "measurement": "passport",
          "price": "3599.99",
          "currency": "USD",
-         "image": "images/fake_id3.jpg",
+         "image": "/images/fake_id3.jpg",
          "onsale": false
        },{
          "amount": 0,
@@ -137,7 +137,7 @@
          "measurement": "passport",
          "price": "2599.99",
          "currency": "USD",
-         "image": "images/fake_id4.jpeg",
+         "image": "/images/fake_id4.jpeg",
          "onsale": false
        },{
          "amount": 0,
@@ -150,7 +150,7 @@
          "measurement": "passport",
          "price": "1500.00",
          "currency": "USD",
-         "image": "images/fake_id5.jpeg",
+         "image": "/images/fake_id5.jpeg",
          "onsale": false
        },{
          "amount": 0,
@@ -163,7 +163,7 @@
          "measurement": "passport",
          "price": "2100.00",
          "currency": "USD",
-         "image": "images/fake_id6.png",
+         "image": "/images/fake_id6.png",
          "onsale": false
        },{
          "amount": 0,
@@ -176,7 +176,7 @@
          "measurement": "passport",
          "price": "5099.99",
          "currency": "USD",
-         "image": "images/fake_id7.jpeg",
+         "image": "/images/fake_id7.jpeg",
          "onsale": true
        },{
          "amount": 0,
@@ -189,7 +189,7 @@
          "measurement": "passport",
          "price": "1999.99",
          "currency": "USD",
-         "image": "images/fake_id8.jpeg",
+         "image": "/images/fake_id8.jpeg",
          "onsale": true
          },
          {
@@ -203,7 +203,7 @@
             "measurement": "passport",
             "price": "1900.00",
             "currency": "USD",
-            "image": "images/fake_id9.jpeg",
+            "image": "/images/fake_id9.jpeg",
             "onsale": true
           
       },
@@ -218,7 +218,7 @@
          "measurement": "passport",
          "price": "4500.00",
          "currency": "USD",
-         "image": "images/fake_id10.jpeg",
+         "image": "/images/fake_id10.jpeg",
          "onsale": false
        
    },{
@@ -232,7 +232,7 @@
       "measurement": "passport",
       "price": "6849.99",
       "currency": "USD",
-      "image": "images/fake_id11.png",
+      "image": "/images/fake_id11.png",
       "onsale": false
     
 }

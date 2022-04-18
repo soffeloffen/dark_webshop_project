@@ -11,8 +11,6 @@ var updatedTotal = total +1;
 localStorage.setItem( "Drug1Amount", updatedTotal ); 
 }
 
-
-
 function reset() {
     sessionStorage.removeItem;
 }
