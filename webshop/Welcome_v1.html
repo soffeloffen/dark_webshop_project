@@ -4,6 +4,9 @@
     <title>Welcome page</title>
     <link rel="stylesheet" href="style/LayoutWelcome.css" />
     <link rel="stylesheet" href="style/LayoutMenu.css" />
+    <link rel="stylesheet" href="style/products.css">
+    <link rel="js" href="js/welcomPage.js">
+    <script src="js/welcomPage.js"></script>
   </head>
 
   <body style="background-color: #646666">
@@ -21,23 +24,19 @@
       <h1>Welcome to the Dark Web</h1>
     </div>
 
-    <h2 class="LatestOffersHeader">Latest Offers</h2>
+    <h2>ITEMS ON SALE</h2>
 
-    <div class="flexbox-container">
-      <a href="products/drug1.html"> <img src="images/drug1.png" style="height: 250px ;width: 250px;" alt="img1" /></a> 
-      <a href="products/id2.html"><img src="images/fake_id2.jpeg"style="height: 250px ;width: 250px;" alt="img2" /></a> 
-      <a href="products/drug5.html"><img src="images/drug5.png" style="height: 250px ;width: 250px;" alt="img3" /> </a>
-      <a href="products/id10.html"><img src="images/fake_id10.jpeg" style="height: 250px ;width: 250px;" alt="img4" /> </a>
-    </div>
+    <div id="itemsOnSale" class="flexbox-container"> </div>
   </body>
 
   <script>
-    document.body.onload = addUserName();
-    function addUserName() {
-      const userName = localStorage.fname;
-      if (userName !== undefined) {
-        document.getElementById("firstname").innerHTML = userName;
-      }
-    }
+    document.body.onload = initializeWelcomePage();
+
+  //   function addUserName() {
+  //   const userName = localStorage.fname;
+  //   if (userName !== undefined) {
+  //     document.getElementById("firstname").innerHTML = userName;
+  //   }
+  // }
   </script>
 </html>

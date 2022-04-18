@@ -45,7 +45,10 @@ app1.get("/products/types/:typeId", (req, res) => {
   res.send(Allproducts.products.filter((x) => x.type == typeId));
 });
 
-
+/*Get products on sale*/
+app1.get("/products/onSaleProducts", (req, res) => {
+  res.send(Allproducts.products.filter((x) => x.onsale == true));
+});
 
 //--------------------------------DOES NOT WORK--------------------------------------------------------------
 
