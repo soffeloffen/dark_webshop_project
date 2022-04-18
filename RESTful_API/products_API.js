@@ -10,9 +10,6 @@ const { all } = require("express/lib/application");
 app1.use(express.static('webshop'))
 app1.get("/", (req, res) => res.send("Server_2: Products"));
 
-//Not used?
-//app1.get("/test", (req, res) => res.send("Testing"));
-
 //goes to html page: ItemsOverview
 app1.get("/itemsoverview", (req, res) => res.sendFile("webshop/ItemsOverview_v1.html", {root: __dirname }));
 
@@ -39,6 +36,11 @@ app1.get("/products/types", (req, res) => {
     res.send(uniqueTypes);
 });
 
+/*Get products on sale*/
+app1.get("/products/sale", (req, res) => {
+  res.send(Allproducts.products.filter((x) => x.onsale == true));
+});
+
 /*Get product by ID -- returns full .json script for specific prodId*/
 app1.get("/products/:prodId", (req, res) => {
   const prodId = req.params.prodId;
@@ -59,29 +61,4 @@ app1.get("/products/types/:typeId", (req, res) => {
   const typeId = req.params.typeId;
   if (!typeId) res.status(404).send("Given ID is not valid");
   res.send(Allproducts.products.filter((x) => x.type == typeId));
-});
-
-/*Get products on sale*/
-app1.get("/products/onSaleProducts", (req, res) => {
-  res.send(Allproducts.products.filter((x) => x.onsale == true));
-});
-
-//--------------------------------DOES NOT WORK--------------------------------------------------------------
-
-/* 
-Define a parameter such as id 
-Get specific product by id or return eller message
-*/
-app1.get("/api/products:id", (req, res) => {
-  resource.send(req.params.id); // 1 simple method
-  const prod = passportProduct.find((c) => c.id == parseInt(req.params.id)); //2 best method
-  if (!prod) res.status(404).send("The product is not found: error 404");
-  res.send(prod);
-});
-
-//products on sale
-app1.get("/sale", (req, res) => {
-  res.send(req.params);
-  if (!product) res.status(404).send("There are no products on sale");
-  res.send(product);
 });
