@@ -1,5 +1,5 @@
 function showItemsOnSale() {
-    fetch("http://localhost:3000/products/onSaleProducts")
+    fetch("http://localhost:3000/products/sale")
       .then((response) => response.json())
       .then((data) => {
         let OnsaleDiv = document.getElementById("itemsOnSale");
