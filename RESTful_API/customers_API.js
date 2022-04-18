@@ -1,11 +1,14 @@
-/**
- * import { CustomersRouter } from "./customer/customer.route.js";
- *
- */
 const express = require("express");
+const cors = require("cors");
 const app2 = express();
-const port = process.env.PORT || 3000; //if no port is given choose 3000
 app2.use(cors());
+const port = process.env.PORT || 3000; //if no port is given choose 3000
+
+let Allproducts = require("./products/products.json");
+const { type } = require("express/lib/response");
+const { all } = require("express/lib/application");
+app2.use(express.static('webshop'))
+app2.get("/", (req, res) => res.send("Server_2: Products"));
 
 app2.listen(port, function (err) {
   if (err) console.log("error in server");
@@ -14,38 +17,7 @@ app2.listen(port, function (err) {
 
 app2.get("/", (req, res) => res.send("Server_3: Customers"));
 
-//get all customers
-app2.get("PATH TO CUSTOMERS", (req, res) => {
-  res.send(req.params);
-});
-
-//get customer by id
-app2.get("PATH TO CUSTOMER ID", (req, res) => {
-  res.send(req.params);
-});
-
-//create a new basket for customer by id
-app2.post("PATH TO BASKET", (req, res) => {
-  res.send(`{
-        "parameters": ${JSON.stringify(req.params)}
-        "body":${JSON.stringify(req.body)}
-    }`);
-});
-
-//put a new resource/product into the basket
-app2.post("/baskets/:customerid/products/:productid", (req, res) => {
-  res.send(`{
-        "parameters": ${JSON.stringify(req.params)}
-        "body":${JSON.stringify(req.body)}
-    }`);
-});
-
-//delete product from basket
-app2.delete("/baskets/:customerid/products/:productid", (req, res) => {
-  res.send(req.params);
-});
-
-//Get specific basket by customer id
-app2.get("/baskets/:customerid/", (req, res) => {
+//Get all customers
+app2.get("/customers", (req, res) => {
   res.send(req.params);
 });

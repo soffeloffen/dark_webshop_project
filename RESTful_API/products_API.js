@@ -1,10 +1,3 @@
-// import express from "express";
-// import cors from "cors";
-
-/**
- * import { ProductsRouter } from "./products/products.route.js";
- *
- */
 const express = require("express");
 const cors = require("cors");
 const app1 = express();
