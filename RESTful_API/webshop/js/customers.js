@@ -1,7 +1,20 @@
 function initializePagew(){
     getelement();
     store2();
+    createCustomer();
 }
+
+function createCustomer(){
+    let fs = require("fs");
+    const customername = document.getElementById("fname");
+    const obj = JSON.stringify(customername);
+    fs.writeFileSync('customers.json', obj, (err) => {
+        if (err) {
+            throw err;
+        }
+        console.log("JSON data is saved.");
+    });
+  }
 
 console.log(window.localStorage.getItem("fname"));
 
