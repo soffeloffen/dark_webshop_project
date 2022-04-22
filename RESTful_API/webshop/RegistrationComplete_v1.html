@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/style/LayoutMenu.css" />
     <link rel="stylesheet" href="/style/LayoutWelcome.css" />
     <link rel="stylesheet" href="/style/LayoutRegister.css" />
+    <script src="/js/customers.js"></script>
   </head>
 
   <body style="background-color: #646666" onload="getelement()">
@@ -27,20 +28,7 @@
       </a>
     </div>
   </body>
-
   <script>
-    console.log(window.localStorage.getItem("fname"));
-
-    function getelement() {
-      var hfirst = document.getElementById("firstname");
-      hfirst.innerText = localStorage.fname;
-      //var hlast = document.getElementById("lastname");
-      //hlast.innerText = localStorage.lname;
-    }
-
-    function store2() {
-      var userName = document.getElementById("firstname");
-      sessionStorage.setItem("fname", userName);
-    }
+    document.onload = initializePagew();
   </script>
 </html>
