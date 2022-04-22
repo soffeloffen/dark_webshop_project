@@ -25,7 +25,7 @@ function addOneTest() {
       .then((response) => response.json())
       .then((data) => {
 
-        const fs = require("fs");
+        //var fs = require('fs');
         let basketjson = fs.readFileSync("/basket.json","utf-8");
 
         let basket = JSON.parse(basketjson);
