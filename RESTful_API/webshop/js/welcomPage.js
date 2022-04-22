@@ -14,11 +14,17 @@ function showItemsOnSale() {
 
           let price = document.createElement("h3");
           price.innerText = product.price;
+
+          //anso: har tilføjet en href så når man klikker på de varer onSale bliver man navigeret til productInfo siden
+          let a = document.createElement("a");
+          a.href = "/item/"+ product.id;
   
-          let image = document.createElement("img");
-          image.src = product.image;
-  
-          node.appendChild(image);
+          let image =document.createElement("img");
+          image.id = product.id;
+          image.src =product.image;
+          
+          a.appendChild(image);
+          node.appendChild(a);
           node.appendChild(title);
           node.appendChild(price);
   

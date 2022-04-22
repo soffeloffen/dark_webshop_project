@@ -26,26 +26,45 @@ function getProduct() {
         quantity.innerText = data[0].quantity + " " + data[0].measurement + " --- " + "price: " + data[0].price + " " + data[0].currency;
        
         let image =document.createElement("img");
-        image.src =data[0].image;
+        image.src ="/"+data[0].image;
 
         let longdescription = document.createElement("h4");
         longdescription.innerText = data[0].longdescription;
 
-       
+
+        let button = document.createElement('button');
+        button.innerHTML = 'click me';
+        button.onclick = addOneTest();
+
+
+       /*
+        let button = document.createElement('button');
+        button.innerHTML = 'click me';
+        button.id = data[0].id;
+        button.onclick = addtoBasket();
+
+        let amountInBasket = document.createElement("h4");
+        amountInBasket.innerText = data[0].amount;
+
+*/       
        // addtoBasket button - currently dead, but to be used later to append to basket
        //we have an attribute in products.json file called 'amount' that we can use to count how many items of each
        //products have been added to basket (for each user OR anonymous user)
-       const addtoBasket = document.createElement("button");
-        addtoBasket.innerHTML = "Add 1 to Basket";
+        //const addtoBasket = document.createElement("button");
+        //addtoBasket.innerHTML = "Add 1 to Basket";
+//addtoBasket.onclick(data[0].amount=+1)
        
-
+       // node.appendChild(button);
         node.appendChild(image);
         node.appendChild(title);
         node.appendChild(quantity);
         node.appendChild(longdescription);
-        node.appendChild(addtoBasket);
+        node.appendChild(button)
+       // node.appendChild(amountInBasket);
+      //  node.appendChild(addtoBasket);
 
 
         productsDiv.appendChild(node);
       });
   }
+

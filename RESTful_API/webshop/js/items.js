@@ -33,7 +33,6 @@ function getAllProducts(value) {
         image.src =product.image;
         
         a.appendChild(image);
-
         //let button = document.createElement('button');
         //button.innerHTML = 'click me';
         //button.onclick = itemInfo();
