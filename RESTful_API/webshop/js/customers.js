@@ -6,16 +6,16 @@ function initializePagew() {
 
 function createCustomer() {
   //Get required fields
-  const customerFirstNameField = document.getElementById("fname");
-  const customerFirstName = customerFirstNameField.value;
+  const usernameField = document.getElementById("username");
+  const customerUsername = usernameField.value;
 
-  const customerLastNameField = document.getElementById("lname");
-  const customerLastName = customerLastNameField.value;
+  const passwordField = document.getElementById("password");
+  const password = passwordField.value;
 
   //Create a customer object
   const customerObject = {
-    firstName: customerFirstName,
-    lastName: customerLastName,
+    username: customerUsername,
+    password: password,
   };
 
   //Convert object to a json string
@@ -40,14 +40,14 @@ function createCustomer() {
 }
 
 function getelement() {
-  var hfirst = document.getElementById("firstname");
-  hfirst.innerText = localStorage.fname;
+  var username = document.getElementById("userName");
+  username.innerText = localStorage.fname;
   //var hlast = document.getElementById("lastname");
   //hlast.innerText = localStorage.lname;
 }
 
 function store2() {
-  var userName = document.getElementById("firstname");
+  var username = document.getElementById("passwords");
   sessionStorage.setItem("fname", userName);
 }
 

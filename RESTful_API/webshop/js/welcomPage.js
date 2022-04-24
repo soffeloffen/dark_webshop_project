@@ -13,7 +13,7 @@ function showItemsOnSale() {
           title.innerText = product.title;
 
           let price = document.createElement("h3");
-          price.innerText = product.price;
+          price.innerText = "$" + product.price;
 
           //anso: har tilføjet en href så når man klikker på de varer onSale bliver man navigeret til productInfo siden
           let a = document.createElement("a");
