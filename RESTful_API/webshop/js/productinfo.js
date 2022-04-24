@@ -47,15 +47,12 @@ function getProduct() {
 
       button.onclick = () => addToBasket(data[0].id);
 
-      // node.appendChild(button);
       node.appendChild(image);
       node.appendChild(title);
       node.appendChild(quantity);
       node.appendChild(longdescription);
       node.appendChild(button);
-      // node.appendChild(amountInBasket);
-      //  node.appendChild(addtoBasket);
-
+      
       productsDiv.appendChild(node);
     });
 }
