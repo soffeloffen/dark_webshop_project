@@ -34,8 +34,12 @@ function createCustomer() {
       response.json().then((newCreatedUser) => {
         createBasket(newCreatedUser.id);
 
+        console.log(newCreatedUser, 'new user')
+
         //Redirect to registration complete window
         localStorage.setItem("fname", newCreatedUser.username);
+        localStorage.setItem("currentUserId", newCreatedUser.id)
+        
         window.location.replace(
           "http://localhost:3000/RegistrationComplete_v1.html"
         );

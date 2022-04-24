@@ -121,7 +121,6 @@ app1.post("/baskets", (req, res) => {
   const filePath = basketsFilePath;
   getJsonArrayFromFile(filePath).then((baskets) => {
     var idArray = baskets.map((x) => x.id);
-
     var id = Math.max(...idArray) + 1;
 
     //Create a new empty basket object for user
@@ -140,23 +139,27 @@ app1.post("/baskets", (req, res) => {
   });
 });
 
-app1.get("/baskets/:id", (req, res) => {
+app1.get("/baskets/:customerId", (req, res) => {
   const filePath = basketsFilePath;
 
   getJsonArrayFromFile(filePath).then((baskets) => {
     //Find basket with the specified id and return it
-    var basket = baskets.filter((x) => x.id == req.params.id);
+    var basket = baskets.filter((x) => x.customerId == req.params.customerId)[0];
     res.status(200).json(basket);
   });
 });
 
 app1.put("/baskets/:id", (req, res) => {
+  //Receive the new basket in the body of the request
   const filePath = basketsFilePath;
   var newBasket = req.body;
+  
+  //Get all baskets, find the one with the id, and replace with the new basket - then write to file
   getJsonArrayFromFile(filePath).then((baskets) => {
     basketIndex = baskets.findIndex(x => x.id == newBasket.id);
     baskets[basketIndex] = newBasket;
-    writeArrayToJsonFile(filePath)
+    writeArrayToJsonFile(filePath, baskets)
+    res.status(200).json({newBasket});
   });
 })
 
