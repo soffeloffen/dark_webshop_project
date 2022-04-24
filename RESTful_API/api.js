@@ -7,6 +7,10 @@ app1.use(cors());
 app1.use(bodyParser.json());
 const port = process.env.PORT || 3000; //if no port is given choose 3000
 
+//Json file paths
+const basketsFilePath = "baskets.json";
+const customersFilePath = "customers.json";
+
 let allProducts = require("./products/products.json");
 const { type } = require("express/lib/response");
 const { all } = require("express/lib/application");
@@ -74,63 +78,38 @@ app1.post("/customers", (req, res) => {
   var newCustomer = req.body;
 
   //File to read
-  const fileName = "customers.json";
+  const fileName = customersFilePath;
+  
+  //Read json file
+  getJsonArrayFromFile(fileName).then((customers) => {
+    //find highest id among existing customer and +1 and assign
+    //Map customersArray to array of ints by selecting only id
+    let idArray = customers.map((x) => x.id);
 
-  //Read json file and parse to array
-  fs.readFile(fileName, function (err, data) {
-    if (err) {
-      //Throw an error if something goes wrong reading the file
-      console.log(
-        `Failed to read file ${fileName}. Failed with error: ${err.message}`
-      );
-      throw err;
-    } else {
-      //We succeeded reading the file and got the data back
-      //Parse data to array
-      var customersArray = JSON.parse(data);
+    //Find the highest id using Math.max and increment by 1
+    //Passing the array directly to Math.max will result in an error when there's more than one id in the array.
+    //To fix this, we use the spread operator as described in this SO post.
+    //https://stackoverflow.com/questions/32647149/why-is-math-max-returning-nan-on-an-array-of-integers
 
-      //find highest id among existing customer and +1 and assign
-      //Map customersArray to array of ints by selecting only id
-      let idArray = customersArray.map((x) => x.id);
+    var id = Math.max(...idArray) + 1;
+    newCustomer.id = id;
 
-      //Find the highest id using Math.max and increment by 1
-      //Passing the array directly to Math.max will result in an error when there's more than one id in the array.
-      //To fix this, we use the spread operator as described in this SO post.
-      //https://stackoverflow.com/questions/32647149/why-is-math-max-returning-nan-on-an-array-of-integers
+    //Push the new customer to the array
+    customers.push(newCustomer);
 
-      var id = Math.max(...idArray) + 1;
-      newCustomer.id = id;
+    //Convert the array back to a json string and then overwrite the file
+    writeArrayToJsonFile(fileName, customers);
 
-      //Push the new customer to the array
-      customersArray.push(newCustomer);
-
-      //Convert the array back to a json string and then overwrite the file
-      fs.writeFile(fileName, JSON.stringify(customersArray), function (err) {
-        //Throw an error if we fail to write to the file
-        if (err) throw err;
-
-        //Send response to client, that we succeesfully stored the new customer, and return the new customer with id to the client
-        res.status(201).json(newCustomer);
-      });
-    }
+    //Send response to client, that we succeesfully stored the new customer, and return the new customer with id to the client
+    res.status(201).json(newCustomer);
   });
 });
 
 //get customers
 app1.get("/customers", (req, res) => {
-  const fileName = "customers.json";
-
-  fs.readFile(fileName, function (err, data) {
-    if (err) {
-      //Throw an error if something goes wrong reading the file
-      console.log(
-        `Failed to read file ${fileName}. Failed with error: ${err.message}`
-      );
-      throw err;
-    } else {
-      var customersArray = JSON.parse(data);
-      res.json(customersArray);
-    }
+  const fileName = customersFilePath;
+  getJsonArrayFromFile(fileName).then((customers) => {
+    res.status(200).json(customers);
   });
 });
 
@@ -139,18 +118,9 @@ app1.post("/baskets", (req, res) => {
   //Receive customerId from request
   var customerId = req.body;
 
-  //Get baskets from file
-  const filePath = "baskets.json";
-  fs.readFile(filePath, function (err, data) {
-    if (err) {
-      console.log(
-        `Failed to read file ${filePath}. Failed with error: ${err.message}`
-      );
-      throw err;
-    }
-    var basketsArray = JSON.parse(data);
-
-    var idArray = basketsArray.map((x) => x.id);
+  const filePath = basketsFilePath;
+  getJsonArrayFromFile(filePath).then((baskets) => {
+    var idArray = baskets.map((x) => x.id);
 
     var id = Math.max(...idArray) + 1;
 
@@ -162,23 +132,19 @@ app1.post("/baskets", (req, res) => {
     };
 
     //Add new basket object to baskets array
-    basketsArray.push(newBasket);
+    baskets.push(newBasket);
 
     //Convert the array back to a json string and then overwrite the file
-    fs.writeFile(filePath, JSON.stringify(basketsArray), function (err) {
-      //Throw an error if we fail to write to the file
-      if (err) throw err;
-
-      //Send response to client, that we succeesfully stored the new customer, and return the new customer with id to the client
-      res.status(201).json(newBasket);
-    });
+    writeArrayToJsonFile(filePath, baskets)
+    res.status(201).json(newBasket);
   });
 });
 
 app1.get("/baskets/:id", (req, res) => {
-  const filePath = "baskets.json";
+  const filePath = basketsFilePath;
 
   getJsonArrayFromFile(filePath).then((baskets) => {
+    //Find basket with the specified id and return it
     var basket = baskets.filter((x) => x.id == req.params.id);
     res.status(200).json(basket);
   });
@@ -189,4 +155,14 @@ async function getJsonArrayFromFile(filePath) {
   const data = await fs.readFile(filePath);
   var dataAsJson = JSON.parse(data);
   return dataAsJson;
+}
+
+//Takes a javascript object and converts it to a json string. Then overrides the the file on the specified path
+async function writeArrayToJsonFile(filePath, data) {
+  try {
+    await fs.writeFile(filePath, JSON.stringify(data));
+  } catch (err) {
+    console.error(`Failed to write to file with path: ${filePath}`);
+    throw err
+  }
 }
