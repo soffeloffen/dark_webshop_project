@@ -5,7 +5,6 @@ function initializePagew(){
 }
 
 function createCustomer(){
-    let fs = require("fs");
     const customername = document.getElementById("fname");
     const obj = JSON.stringify(customername);
     fs.writeFileSync('customers.json', obj, (err) => {

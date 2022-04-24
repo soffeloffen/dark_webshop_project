@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const app2 = express();
 app2.use(cors());
-const port = process.env.PORT || 3000; //if no port is given choose 3000
 
-const fs = require("node:fs")
+const fs = require("fs");
+
+const port = process.env.PORT || 3000; //if no port is given choose 3000
 const { type } = require("express/lib/response");
 const { all } = require("express/lib/application");
 app2.use(express.static('webshop'))
