@@ -31,18 +31,42 @@ function createCustomer() {
     //Wait for the API to respond - statuscode should be 201 if everything went well
     if (response.status === 201) {
       console.log("Customer successfully created");
-      window.location.replace("http://localhost:3000/RegistrationComplete_v1.html");
+      
+      //Get the new created user from the response and then create a basket
+      response.json().then((newCreatedUser) => {
+        console.log(newCreatedUser, ' new create user')
+        createBasket(newCreatedUser.id);
+        //window.location.replace("http://localhost:3000/RegistrationComplete_v1.html");
+      });
+    
+    
     } else {
       console.log("Failed with error code + " + response.status);
     }
   });
 }
 
-function getelement() {
+function createBasket(customerId){
+  customerIdObj = {"customerId": customerId}
+  const customerIdObjectAsJsonString = JSON.stringify(customerIdObj);
+  
+  fetch("http://localhost:3000/baskets", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: customerIdObjectAsJsonString,
+  }).then((response) => {
+    //Wait for the API to respond - statuscode should be 201 if everything went well
+    if (response.status === 201) {
+      console.log("Basket successfully created");
+    } else {
+      console.log("Failed with error code + " + response.status);
+    }
+  });
 }
 
-function store2() {
 
-}
 
 

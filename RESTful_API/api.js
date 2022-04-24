@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const fs = require("fs");
+const fs = require("fs").promises; //Needed to be able to read files async - https://thewebdev.info/2022/02/26/how-to-read-file-with-async-and-await-in-node-js/
 const app1 = express();
 app1.use(cors());
 app1.use(bodyParser.json());
@@ -89,13 +89,19 @@ app1.post("/customers", (req, res) => {
       //Parse data to array
       var customersArray = JSON.parse(data);
 
-      //find highest id among existing customer and +1 and assign 
-      let idArray = customersArray.map(x => x.id);
-      console.log(idArray, "idarray");
-      let id = Math.max(idArray) + 1;
+      //find highest id among existing customer and +1 and assign
+      //Map customersArray to array of ints by selecting only id
+      let idArray = customersArray.map((x) => x.id);
+
+      //Find the highest id using Math.max and increment by 1
+      //Passing the array directly to Math.max will result in an error when there's more than one id in the array.
+      //To fix this, we use the spread operator as described in this SO post.
+      //https://stackoverflow.com/questions/32647149/why-is-math-max-returning-nan-on-an-array-of-integers
+
+      var id = Math.max(...idArray) + 1;
       newCustomer.id = id;
 
-      //Push the new customer to the array 
+      //Push the new customer to the array
       customersArray.push(newCustomer);
 
       //Convert the array back to a json string and then overwrite the file
@@ -103,14 +109,14 @@ app1.post("/customers", (req, res) => {
         //Throw an error if we fail to write to the file
         if (err) throw err;
 
-        //Send response to client, that we succeesfully stored the new customer
-        res.status(201).send("Customer created");
+        //Send response to client, that we succeesfully stored the new customer, and return the new customer with id to the client
+        res.status(201).json(newCustomer);
       });
     }
   });
 });
 
-//get customers 
+//get customers
 app1.get("/customers", (req, res) => {
   const fileName = "customers.json";
 
@@ -123,8 +129,64 @@ app1.get("/customers", (req, res) => {
       throw err;
     } else {
       var customersArray = JSON.parse(data);
-      console.log(customersArray);
       res.json(customersArray);
     }
   });
 });
+
+//BASKETS
+app1.post("/baskets", (req, res) => {
+  //Receive customerId from request
+  var customerId = req.body;
+
+  //Get baskets from file
+  const filePath = "baskets.json";
+  fs.readFile(filePath, function (err, data) {
+    if (err) {
+      console.log(
+        `Failed to read file ${filePath}. Failed with error: ${err.message}`
+      );
+      throw err;
+    }
+    var basketsArray = JSON.parse(data);
+
+    var idArray = basketsArray.map((x) => x.id);
+
+    var id = Math.max(...idArray) + 1;
+
+    //Create a new empty basket object for user
+    const newBasket = {
+      id: id,
+      customerId: customerId,
+      products: [],
+    };
+
+    //Add new basket object to baskets array
+    basketsArray.push(newBasket);
+
+    //Convert the array back to a json string and then overwrite the file
+    fs.writeFile(filePath, JSON.stringify(basketsArray), function (err) {
+      //Throw an error if we fail to write to the file
+      if (err) throw err;
+
+      //Send response to client, that we succeesfully stored the new customer, and return the new customer with id to the client
+      res.status(201).json(newBasket);
+    });
+  });
+});
+
+app1.get("/baskets/:id", (req, res) => {
+  const filePath = "baskets.json";
+
+  getJsonArrayFromFile(filePath).then((baskets) => {
+    var basket = baskets.filter((x) => x.id == req.params.id);
+    res.status(200).json(basket);
+  });
+});
+
+//Read the content of a file and return a promise containing the content parsed as a javascript array
+async function getJsonArrayFromFile(filePath) {
+  const data = await fs.readFile(filePath);
+  var dataAsJson = JSON.parse(data);
+  return dataAsJson;
+}
