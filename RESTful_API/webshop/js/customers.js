@@ -1,7 +1,5 @@
 function initializePagew() {
-  getelement();
-  store2();
-  createCustomer();
+  
 }
 
 function createCustomer() {
@@ -33,6 +31,7 @@ function createCustomer() {
     //Wait for the API to respond - statuscode should be 201 if everything went well
     if (response.status === 201) {
       console.log("Customer successfully created");
+      window.location.replace("http://localhost:3000/RegistrationComplete_v1.html");
     } else {
       console.log("Failed with error code + " + response.status);
     }
@@ -40,17 +39,10 @@ function createCustomer() {
 }
 
 function getelement() {
-  var username = document.getElementById("userName");
-  username.innerText = localStorage.fname;
-  //var hlast = document.getElementById("lastname");
-  //hlast.innerText = localStorage.lname;
 }
 
 function store2() {
-  var username = document.getElementById("passwords");
-  sessionStorage.setItem("fname", userName);
+
 }
 
-function customerid() {
-  id += 1;
-}
+

@@ -89,6 +89,12 @@ app1.post("/customers", (req, res) => {
       //Parse data to array
       var customersArray = JSON.parse(data);
 
+      //find highest id among existing customer and +1 and assign 
+      let idArray = customersArray.map(x => x.id);
+      console.log(idArray, "idarray");
+      let id = Math.max(idArray) + 1;
+      newCustomer.id = id;
+
       //Push the new customer to the array 
       customersArray.push(newCustomer);
 
