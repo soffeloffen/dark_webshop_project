@@ -153,6 +153,7 @@ app1.put("/baskets/:id", (req, res) => {
   //Receive the new basket in the body of the request
   const filePath = basketsFilePath;
   var newBasket = req.body;
+  console.log('received new basket', newBasket)
   
   //Get all baskets, find the one with the id, and replace with the new basket - then write to file
   getJsonArrayFromFile(filePath).then((baskets) => {

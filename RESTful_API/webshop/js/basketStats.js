@@ -7,6 +7,7 @@ function initializePage() {
 function initializeBasket() {
   //Create a div to hold the basket products
   var basketDiv = document.getElementById("basket");
+  basketDiv.innerHTML = "";
   var currentUserId = localStorage.getItem("currentUserId");
   price = 0;
 
@@ -19,6 +20,10 @@ function initializeBasket() {
       var priceLine = document.createElement("h3");
       basketDiv.appendChild(priceLine);
 
+      if(userBasket.products.length == 0){
+        basketDiv.innerHTML = "<h3>No products in basket</h3>"
+      }
+
       //Create a list item for each orderline
       userBasket.products.forEach((orderLine) => {
         var listElement = document.createElement("li");
@@ -27,20 +32,41 @@ function initializeBasket() {
         fetch("http://localhost:3000/products/" + orderLine.productId).then(
           (response) =>
             response.json().then((product) => {
-              console.log(price, "price before");
               price = price + product[0].price * orderLine.quantity;
-              console.log(price, "price after");
-              console.log(product);
-              listElement.innerHTML = `<h3>${product[0].title} x ${orderLine.quantity}</h3>`;
+              listElement.innerHTML = `<h3>${product[0].title} x ${orderLine.quantity}</h3><button onclick="removeProductFromBasket(${product[0].id})">Remove</button>`;
+              listElement.id = product[0].id;
               list.appendChild(listElement);
               priceLine.innerHTML = `Total: ${price}`;
             })
         );
-        
       });
-      
-      
-      
+    })
+  );
+}
+
+function removeProductFromBasket(productId) {
+  const currentUserId = localStorage.getItem("currentUserId");
+  fetch("http://localhost:3000/baskets/" + currentUserId).then((response) =>
+    response.json().then((basket) => {
+      var orderLineToEdit = basket.products.find(
+        (x) => x.productId == productId
+      );
+      if (orderLineToEdit.quantity > 1) {
+        orderLineToEdit.quantity = orderLineToEdit.quantity - 1;
+      }
+      else {
+        basket.products = basket.products.filter(x => x.productId != productId)
+      }
+
+      fetch("http://localhost:3000/baskets/" + basket.id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(basket),
+      }).then((response) =>
+        response.json().then((newBasket) => initializeBasket())
+      );
     })
   );
 }
