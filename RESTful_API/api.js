@@ -116,7 +116,7 @@ app1.get("/customers", (req, res) => {
 //BASKETS
 app1.post("/baskets", (req, res) => {
   //Receive customerId from request
-  var customerId = req.body;
+  var customerId = req.body.customerId;
 
   const filePath = basketsFilePath;
   getJsonArrayFromFile(filePath).then((baskets) => {
@@ -149,6 +149,16 @@ app1.get("/baskets/:id", (req, res) => {
     res.status(200).json(basket);
   });
 });
+
+app1.put("/baskets/:id", (req, res) => {
+  const filePath = basketsFilePath;
+  var newBasket = req.body;
+  getJsonArrayFromFile(filePath).then((baskets) => {
+    basketIndex = baskets.findIndex(x => x.id == newBasket.id);
+    baskets[basketIndex] = newBasket;
+    writeArrayToJsonFile(filePath)
+  });
+})
 
 //Read the content of a file and return a promise containing the content parsed as a javascript array
 async function getJsonArrayFromFile(filePath) {
