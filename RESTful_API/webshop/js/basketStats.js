@@ -36,7 +36,7 @@ function initializeBasket() {
               listElement.innerHTML = `<h3>${product[0].title} x ${orderLine.quantity}</h3><button onclick="removeProductFromBasket(${product[0].id})">Remove</button>`;
               listElement.id = product[0].id;
               list.appendChild(listElement);
-              priceLine.innerHTML = `Total: ${price}`;
+              priceLine.innerHTML = `Total: ${price} USD`;
             })
         );
       });
@@ -46,18 +46,23 @@ function initializeBasket() {
 
 function removeProductFromBasket(productId) {
   const currentUserId = localStorage.getItem("currentUserId");
+  //Get the current users basket
   fetch("http://localhost:3000/baskets/" + currentUserId).then((response) =>
     response.json().then((basket) => {
+      //Find the orderline to edit
       var orderLineToEdit = basket.products.find(
         (x) => x.productId == productId
       );
+      //If quantity is above 1 we count down the quantity by 1
       if (orderLineToEdit.quantity > 1) {
         orderLineToEdit.quantity = orderLineToEdit.quantity - 1;
       }
+      //If quantity is 1, we remove the item from the products in the basket
       else {
         basket.products = basket.products.filter(x => x.productId != productId)
       }
 
+      //Send the updated basket to the server
       fetch("http://localhost:3000/baskets/" + basket.id, {
         method: "PUT",
         headers: {
@@ -65,7 +70,9 @@ function removeProductFromBasket(productId) {
         },
         body: JSON.stringify(basket),
       }).then((response) =>
-        response.json().then((newBasket) => initializeBasket())
+        response.json()
+        //Load the page again to reflect changes
+        .then((newBasket) => initializeBasket())
       );
     })
   );
