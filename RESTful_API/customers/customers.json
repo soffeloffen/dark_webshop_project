@@ -1,9 +1,8 @@
 {
-    "customer": [
-      {
-        "id": "1",
-        "first_name": "Sofie"
-      }
-    ]
-  }
-  
+  "customer": [
+    {
+      "id": "1",
+      "first_name": "Sofie"
+    }
+  ]
+}

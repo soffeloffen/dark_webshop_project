@@ -1,21 +1,43 @@
-function initializePagew(){
-    getelement();
-    store2();
-    createCustomer();
+function initializePagew() {
+  getelement();
+  store2();
+  createCustomer();
 }
 
-function createCustomer(){
-    const customername = document.getElementById("fname");
-    const obj = JSON.stringify(customername);
-    fs.writeFileSync('customers.json', obj, (err) => {
-        if (err) {
-            throw err;
-        }
-        console.log("JSON data is saved.");
-    });
-  }
+function createCustomer() {
+  //Get required fields
+  const customerFirstNameField = document.getElementById("fname");
+  const customerFirstName = customerFirstNameField.value;
 
-console.log(window.localStorage.getItem("fname"));
+  const customerLastNameField = document.getElementById("lname");
+  const customerLastName = customerLastNameField.value;
+
+  //Create a customer object
+  const customerObject = {
+    firstName: customerFirstName,
+    lastName: customerLastName,
+  };
+
+  //Convert object to a json string
+  const customersObjectAsJsonString = JSON.stringify(customerObject);
+
+  //Send a post request to the customers endpoint with the json string in the body of the request
+  fetch("http://localhost:3000/customers", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: customersObjectAsJsonString,
+  }).then((response) => {
+    //Wait for the API to respond - statuscode should be 201 if everything went well
+    if (response.status === 201) {
+      console.log("Customer successfully created");
+    } else {
+      console.log("Failed with error code + " + response.status);
+    }
+  });
+}
 
 function getelement() {
   var hfirst = document.getElementById("firstname");
@@ -29,6 +51,6 @@ function store2() {
   sessionStorage.setItem("fname", userName);
 }
 
-function customerid(){
-    id += 1;
+function customerid() {
+  id += 1;
 }
