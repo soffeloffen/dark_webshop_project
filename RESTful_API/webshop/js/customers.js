@@ -1,5 +1,5 @@
-function initializePagew() {
-  
+function initializePage() {
+  document.getElementById("userName").innerHTML = localStorage.getItem("fname");
 }
 
 function createCustomer() {
@@ -30,26 +30,26 @@ function createCustomer() {
   }).then((response) => {
     //Wait for the API to respond - statuscode should be 201 if everything went well
     if (response.status === 201) {
-      console.log("Customer successfully created");
-      
       //Get the new created user from the response and then create a basket
       response.json().then((newCreatedUser) => {
-        console.log(newCreatedUser, ' new create user')
         createBasket(newCreatedUser.id);
-        //window.location.replace("http://localhost:3000/RegistrationComplete_v1.html");
+
+        //Redirect to registration complete window
+        localStorage.setItem("fname", newCreatedUser.username);
+        window.location.replace(
+          "http://localhost:3000/RegistrationComplete_v1.html"
+        );
       });
-    
-    
     } else {
       console.log("Failed with error code + " + response.status);
     }
   });
 }
 
-function createBasket(customerId){
-  customerIdObj = {"customerId": customerId}
+function createBasket(customerId) {
+  customerIdObj = { customerId: customerId };
   const customerIdObjectAsJsonString = JSON.stringify(customerIdObj);
-  
+
   fetch("http://localhost:3000/baskets", {
     method: "POST",
     headers: {
@@ -66,7 +66,3 @@ function createBasket(customerId){
     }
   });
 }
-
-
-
-

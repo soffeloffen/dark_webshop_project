@@ -79,7 +79,7 @@ app1.post("/customers", (req, res) => {
 
   //File to read
   const fileName = customersFilePath;
-  
+
   //Read json file
   getJsonArrayFromFile(fileName).then((customers) => {
     //find highest id among existing customer and +1 and assign
@@ -135,7 +135,7 @@ app1.post("/baskets", (req, res) => {
     baskets.push(newBasket);
 
     //Convert the array back to a json string and then overwrite the file
-    writeArrayToJsonFile(filePath, baskets)
+    writeArrayToJsonFile(filePath, baskets);
     res.status(201).json(newBasket);
   });
 });
@@ -163,6 +163,6 @@ async function writeArrayToJsonFile(filePath, data) {
     await fs.writeFile(filePath, JSON.stringify(data));
   } catch (err) {
     console.error(`Failed to write to file with path: ${filePath}`);
-    throw err
+    throw err;
   }
 }
