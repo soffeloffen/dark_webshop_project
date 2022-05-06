@@ -17,8 +17,6 @@ const { all } = require("express/lib/application");
 app1.use(express.static("webshop"));
 app1.get("/", (req, res) => res.send("Server_2: Products"));
 
-
-
 //Invalid route statements
 app1.listen(port, function (err) {
   if (err) console.log("error in server");
@@ -120,7 +118,6 @@ app1.post("/baskets", (req, res) => {
     //Create a new empty basket object for user
     const newBasket = {
       id: id,
-      customerId: customerId,
       products: [],
     };
 
@@ -142,11 +139,12 @@ app1.post("/baskets/:id/products/:productid", (req, res) => {
 });
 
 app1.get("/baskets/:customerId", (req, res) => {
+app1.get("/baskets/:id", (req, res) => {
   const filePath = basketsFilePath;
 
   getJsonArrayFromFile(filePath).then((baskets) => {
     //Find basket with the specified id and return it
-    var basket = baskets.filter((x) => x.customerId == req.params.customerId)[0];
+    var basket = baskets.filter((x) => x.id == req.params.id)[0];
     res.status(200).json(basket);
   });
 });
@@ -165,15 +163,9 @@ app1.put("/baskets/:id", (req, res) => {
   });
 })
 
-//goes to html page: ItemsOverview
-app1.get("/itemsoverview", (req, res) =>
-  res.sendFile("webshop/ItemsOverview_v1.html", { root: __dirname })
-);
-
-//get product info
-app1.get("/productinfo", (req, res) =>
-  res.sendFile("webshop/ProductInfo.html", { root: __dirname })
-);
+app1.delete("baskets/:id/products/:prodId", (req, res) => {
+  res.send(req.params + "item succesfully deleted")
+})
 
 //Read the content of a file and return a promise containing the content parsed as a javascript array
 async function getJsonArrayFromFile(filePath) {
