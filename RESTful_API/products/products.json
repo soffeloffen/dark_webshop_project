@@ -242,7 +242,7 @@
       "amount": 0,
       "id": 18,
       "type": "DDOS Attack",
-      "title": "DDOS Attack on Unprotected website",
+      "title": "DDOS Attack on Unprotected website [tiny]",
       "shortdescription": "Unprotected website, 10-50k requests per second, 1 hour.",
       "longdescription": "Buy a DDOS Attack on an unprotected website! 10-15k requests per second for one whole hour!",
       "quantity": "1",
@@ -250,6 +250,47 @@
       "price": "15",
       "currency": "USD",
       "image": "images/ddos1.png",
+      "onsale": false
+    },
+    {
+      "amount": 0,
+      "id": 19,
+      "type": "DDOS Attack",
+      "title": "DDOS Attack on Unprotected website [small]",
+      "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
+      "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a full 24 hours!",
+      "quantity": "1",
+      "measurement": "duration",
+      "price": "50",
+      "currency": "USD",
+      "image": "images/ddos2.png",
+      "onsale": false
+    },
+    {
+      "amount": 0,
+      "id": 20,
+      "type": "DDOS Attack",
+      "title": "DDOS Attack on Unprotected website [medium]",
+      "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
+      "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a full week!",
+      "quantity": "1",
+      "measurement": "duration",
+      "price": "500",
+      "currency": "USD",
+      "image": "images/ddos3.png",
+      "onsale": false
+    },{
+      "amount": 0,
+      "id": 21,
+      "type": "DDOS Attack",
+      "title": "DDOS Attack on Unprotected website [large]",
+      "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
+      "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a whole month!",
+      "quantity": "1",
+      "measurement": "duration",
+      "price": "1000",
+      "currency": "USD",
+      "image": "images/ddos4.png",
       "onsale": false
     }
   ]
