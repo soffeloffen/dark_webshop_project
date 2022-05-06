@@ -133,19 +133,22 @@ app1.post("/baskets", (req, res) => {
   });
 });
 
+//DET ER DEN HER POST TIL BASKET DER IKKE VIRKER
 //Put new product in basket
 app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
   
   try{
+    //PARAMETER CONST
     const prodId = req.params.prodId;
     const basketId = req.params.id;
+    //TEST CONST
     const basketTest =req.params.productListTest;
     const basketTest2 =req.subdomains;
 
+    //BASKET.JSON
     const fileName = basketsFilePath;
 
-    console.log(basketId);
-
+    //LOOPER GENNEM ALLE PRODUKTER OG RETURNERER PRODUCT HVOR ID MATCHER PARAMETER prodId
     const product = allProducts.products.filter((x) => x.id == prodId);
 
     //getJsonArrayFromFile(fileName).then((products) => {
@@ -155,21 +158,28 @@ app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
       //fordi basketId ikke er et array.
       //problemet er at vi mangler at finde products[] array der ligger i basket for specifiktbasket id
       //Convert the array back to a json string and then overwrite the file
-   // writeArrayToJsonFile(fileName, baskets);
-  
+      //TEST (KAN SLETTES)
    const data = fileName;
    const arr = Object.values(data)
+      // writeArrayToJsonFile(fileName, baskets); ???
    //const arr = data.filter((x)=> x.id)
    console.log("hey");
    console.log(arr);
    
+    //TEST (KAN SLETTES)
+   //TEST, PRØVER AT FINDE BASKET ID DER ER = DET BASKETID VI FÅR I PARAM
+   //FOR AT FINDE PRODUCTS ARRAY PÅ DEN BASKET
    const basket1 = arr.filter((x) => x.id == basketId);
 
-   console.log(basket1);
-
+    //TEST (KAN SLETTES)
+    console.log(basket1);
+   //RETURNERER DET PRODUCT SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
     console.log(product[0]);
+    //RETURNERER PRODUCT ID PÅ DET PRODUCT SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
     console.log(prodId);
-
+    //RETURNERER BASKET ID DEN CUSTOMER SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
+    console.log(basketId);
+    //TEST (KAN SLETTES)
     console.log(test)
 
     basket1.push(product)
@@ -178,9 +188,7 @@ app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
   }
 });
 
-/*app1.get("/baskets/:id/products/:productid", (req, res) => {
 
-});*/
 
 app1.get("/baskets/:id", (req, res) => {
   const filePath = basketsFilePath;
