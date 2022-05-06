@@ -141,8 +141,7 @@ app1.post("/baskets/:id/products/:productid", (req, res) => {
 app1.get("/baskets/:id/products/:productid", (req, res) => {
     const filePath = basketsFilePath;
 
-    getJsonArrayFromFile(filePath).then((baskets) => {
-      //Find basket with the specified id and return it
+    getJsonArrayFromFile(fileName).then((baskets) => {
       var basket = baskets.filter((x) => x.id == req.params.id)[0];
       res.status(200).json(basket);
     });
