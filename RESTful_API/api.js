@@ -27,7 +27,8 @@ app1.listen(port, function (err) {
 
 //Products
 /*Get all products*/
-app1.get("/Products", (req, res) => {
+app1.get("/products", (req, res) => {
+ res.status(200).json(allProducts)
   res.send(allProducts);
 });
 
@@ -40,6 +41,7 @@ app1.get("/products/types", (req, res) => {
 
 /*Get products on sale*/
 app1.get("/products/sale", (req, res) => {
+  res.status(200).json(allProducts)
   res.send(allProducts.products.filter((x) => x.onsale == true));
 });
 
@@ -129,6 +131,14 @@ app1.post("/baskets", (req, res) => {
     writeArrayToJsonFile(filePath, baskets);
     res.status(201).json(newBasket);
   });
+});
+
+//Put new product in basket
+app1.post("/baskets/:id/products/:productid", (req, res) => {
+  res.send(`{
+      "parameters": ${JSON.stringify(req.params)}
+      "body":${JSON.stringify(req.body)}
+  }`);
 });
 
 app1.get("/baskets/:customerId", (req, res) => {

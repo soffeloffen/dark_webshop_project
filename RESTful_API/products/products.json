@@ -44,7 +44,7 @@
     },
     {
       "amount": 0,
-      "id": "4",
+      "id": 4,
       "type": "Drug",
       "title": "Joints",
       "shortdescription": "Pot Joints, pre-rolled",
@@ -236,6 +236,20 @@
       "price": "6849.99",
       "currency": "USD",
       "image": "images/fake_id11.png",
+      "onsale": false
+    },
+    {
+      "amount": 0,
+      "id": 18,
+      "type": "DDOS Attack",
+      "title": "DDOS Attack on Unprotected website",
+      "shortdescription": "Unprotected website, 10-50k requests per second, 1 hour.",
+      "longdescription": "Buy a DDOS Attack on an unprotected website! 10-15k requests per second for one whole hour!",
+      "quantity": "1",
+      "measurement": "duration",
+      "price": "15",
+      "currency": "USD",
+      "image": "images/ddos1.png",
       "onsale": false
     }
   ]
