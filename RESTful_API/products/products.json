@@ -241,7 +241,7 @@
     {
       "amount": 0,
       "id": 18,
-      "type": "DDOS Attack",
+      "type": "DDOSAttack",
       "title": "DDOS Attack on Unprotected website [tiny]",
       "shortdescription": "Unprotected website, 10-50k requests per second, 1 hour.",
       "longdescription": "Buy a DDOS Attack on an unprotected website! 10-15k requests per second for one whole hour!",
@@ -255,7 +255,7 @@
     {
       "amount": 0,
       "id": 19,
-      "type": "DDOS Attack",
+      "type": "DDOSAttack",
       "title": "DDOS Attack on Unprotected website [small]",
       "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
       "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a full 24 hours!",
@@ -269,7 +269,7 @@
     {
       "amount": 0,
       "id": 20,
-      "type": "DDOS Attack",
+      "type": "DDOSAttack",
       "title": "DDOS Attack on Unprotected website [medium]",
       "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
       "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a full week!",
@@ -282,7 +282,7 @@
     },{
       "amount": 0,
       "id": 21,
-      "type": "DDOS Attack",
+      "type": "DDOSAttack",
       "title": "DDOS Attack on Unprotected website [large]",
       "shortdescription": "Unprotected website, 10-50k requests per second, 24 hours.",
       "longdescription": "Buy a small DDOS Attack on an unprotected website! 10-15k requests per second for a whole month!",
