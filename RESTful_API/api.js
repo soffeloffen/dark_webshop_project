@@ -116,7 +116,6 @@ app1.post("/baskets", (req, res) => {
     //Create a new empty basket object for user
     const newBasket = {
       id: id,
-      customerId: customerId,
       products: [],
     };
 
