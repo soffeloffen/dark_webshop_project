@@ -182,7 +182,9 @@ app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
     //TEST (KAN SLETTES)
     console.log(test)
 
+    //VIRKER IKKE - SKAL ENDE MED AT VÆRE products.push(product) //TROR JEG (liste fra basket.js, basketid)
     basket1.push(product)
+
   } catch(error){
     res.status(400).send(error.message);
   }
