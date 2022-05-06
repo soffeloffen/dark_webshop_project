@@ -152,10 +152,6 @@ app1.put("/baskets/:id", (req, res) => {
   });
 })
 
-app2.delete("/baskets/:customerid/products/:productid", (req, res) => {
-  res.send(req.params);
-});
-
 app1.delete("baskets/:id/products/:prodId", (req, res) => {
   res.send(req.params + "item succesfully deleted")
 })
