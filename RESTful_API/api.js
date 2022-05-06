@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000; //if no port is given choose 3000
 const basketsFilePath = "baskets.json";
 const customersFilePath = "customers.json";
 
+
 let allProducts = require("./products/products.json");
 const { type } = require("express/lib/response");
 const { all } = require("express/lib/application");
@@ -111,6 +112,8 @@ app1.post("/baskets", (req, res) => {
   var customerId = req.body.customerId;
 
   const filePath = basketsFilePath;
+
+
   getJsonArrayFromFile(filePath).then((baskets) => {
     var idArray = baskets.map((x) => x.id);
     var id = Math.max(...idArray) + 1;
@@ -131,21 +134,53 @@ app1.post("/baskets", (req, res) => {
 });
 
 //Put new product in basket
-app1.post("/baskets/:id/products/:productid", (req, res) => {
-  res.send(`{
-      "parameters": ${JSON.stringify(req.params)}
-      "body":${JSON.stringify(req.body)}
-  }`);
+app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
+  
+  try{
+    const prodId = req.params.prodId;
+    const basketId = req.params.id;
+    const basketTest =req.params.productListTest;
+    const basketTest2 =req.subdomains;
+
+    const fileName = basketsFilePath;
+
+    console.log(basketId);
+
+    const product = allProducts.products.filter((x) => x.id == prodId);
+
+    //getJsonArrayFromFile(fileName).then((products) => {
+     
+  
+      //TypeError: basketId.push is not a function
+      //fordi basketId ikke er et array.
+      //problemet er at vi mangler at finde products[] array der ligger i basket for specifiktbasket id
+      //Convert the array back to a json string and then overwrite the file
+   // writeArrayToJsonFile(fileName, baskets);
+  
+   const data = fileName;
+   const arr = Object.values(data)
+   //const arr = data.filter((x)=> x.id)
+   console.log("hey");
+   console.log(arr);
+   
+   const basket1 = arr.filter((x) => x.id == basketId);
+
+   console.log(basket1);
+
+    console.log(product[0]);
+    console.log(prodId);
+
+    console.log(test)
+
+    basket1.push(product)
+  } catch(error){
+    res.status(400).send(error.message);
+  }
 });
 
-app1.get("/baskets/:id/products/:productid", (req, res) => {
-    const filePath = basketsFilePath;
+/*app1.get("/baskets/:id/products/:productid", (req, res) => {
 
-    getJsonArrayFromFile(fileName).then((baskets) => {
-      var basket = baskets.filter((x) => x.id == req.params.id)[0];
-      res.status(200).json(basket);
-    });
-});
+});*/
 
 app1.get("/baskets/:id", (req, res) => {
   const filePath = basketsFilePath;
