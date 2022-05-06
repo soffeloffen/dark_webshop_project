@@ -138,7 +138,6 @@ app1.post("/baskets/:id/products/:productid", (req, res) => {
   }`);
 });
 
-app1.get("/baskets/:customerId", (req, res) => {
 app1.get("/baskets/:id", (req, res) => {
   const filePath = basketsFilePath;
 
@@ -183,3 +182,4 @@ async function writeArrayToJsonFile(filePath, data) {
     throw err;
   }
 }
+
