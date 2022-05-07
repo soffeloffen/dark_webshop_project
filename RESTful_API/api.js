@@ -44,19 +44,19 @@ app1.get("/products/sale", (req, res) => {
   res.send(allProducts.products.filter((x) => x.onsale == true));
 });
 
-/*Get product by ID -- returns full .json script for specific prodId*/
+/*Get product by ID */
 app1.get("/products/:prodId", (req, res) => {
   const prodId = req.params.prodId;
   if (!prodId) res.status(404).send("Given ID is not valid");
   res.send(allProducts.products.filter((x) => x.id == prodId));
 });
 
-//Get ID -- returns one id to ProductInfo.html to process and visualise data
-app1.get("/item/:prodId", (req, res) => {
-  const prodId = req.params.prodId;
-  if (!prodId) res.status(404).send("Given ID is not valid");
-  res.sendFile("webshop/ProductInfo.html", { root: __dirname });
-});
+// //Get ID -- returns one id to ProductInfo.html to process and visualise data
+// app1.get("/item/:prodId", (req, res) => {
+//   const prodId = req.params.prodId;
+//   if (!prodId) res.status(404).send("Given ID is not valid");
+//   res.sendFile("webshop/ProductInfo.html", { root: __dirname });
+// });
 
 /*Get a specific product by category*/
 app1.get("/products/types/:typeId", (req, res) => {
@@ -189,7 +189,6 @@ app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
     res.status(400).send(error.message);
   }
 });
-
 
 
 app1.get("/baskets/:id", (req, res) => {
