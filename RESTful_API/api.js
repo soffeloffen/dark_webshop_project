@@ -133,64 +133,6 @@ app1.post("/baskets", (req, res) => {
   });
 });
 
-//DET ER DEN HER POST TIL BASKET DER IKKE VIRKER
-//Put new product in basket
-app1.post("/baskets/:id/:productListTest/:prodId", (req, res) => {
-  
-  try{
-    //PARAMETER CONST
-    const prodId = req.params.prodId;
-    const basketId = req.params.id;
-    //TEST CONST
-    const basketTest =req.params.productListTest;
-    const basketTest2 =req.subdomains;
-
-    //BASKET.JSON
-    const fileName = basketsFilePath;
-
-    //LOOPER GENNEM ALLE PRODUKTER OG RETURNERER PRODUCT HVOR ID MATCHER PARAMETER prodId
-    const product = allProducts.products.filter((x) => x.id == prodId);
-
-    //getJsonArrayFromFile(fileName).then((products) => {
-     
-  
-      //TypeError: basketId.push is not a function
-      //fordi basketId ikke er et array.
-      //problemet er at vi mangler at finde products[] array der ligger i basket for specifiktbasket id
-      //Convert the array back to a json string and then overwrite the file
-      //TEST (KAN SLETTES)
-   const data = fileName;
-   const arr = Object.values(data)
-      // writeArrayToJsonFile(fileName, baskets); ???
-   //const arr = data.filter((x)=> x.id)
-   console.log("hey");
-   console.log(arr);
-   
-    //TEST (KAN SLETTES)
-   //TEST, PRØVER AT FINDE BASKET ID DER ER = DET BASKETID VI FÅR I PARAM
-   //FOR AT FINDE PRODUCTS ARRAY PÅ DEN BASKET
-   const basket1 = arr.filter((x) => x.id == basketId);
-
-    //TEST (KAN SLETTES)
-    console.log(basket1);
-   //RETURNERER DET PRODUCT SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
-    console.log(product[0]);
-    //RETURNERER PRODUCT ID PÅ DET PRODUCT SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
-    console.log(prodId);
-    //RETURNERER BASKET ID DEN CUSTOMER SOM VI ER INDE PÅ NÅR VI KLIKKER 'ADD TO BASKET'
-    console.log(basketId);
-    //TEST (KAN SLETTES)
-    console.log(test)
-
-    //VIRKER IKKE - SKAL ENDE MED AT VÆRE products.push(product) //TROR JEG (liste fra basket.js, basketid)
-    basket1.push(product)
-
-  } catch(error){
-    res.status(400).send(error.message);
-  }
-});
-
-
 app1.get("/baskets/:id", (req, res) => {
   const filePath = basketsFilePath;
 
@@ -201,6 +143,8 @@ app1.get("/baskets/:id", (req, res) => {
   });
 });
 
+
+//overskriver gamle json --> bruges både til at oprette og slette produkter i en basket
 app1.put("/baskets/:id", (req, res) => {
   //Receive the new basket in the body of the request
   const filePath = basketsFilePath;
@@ -215,10 +159,6 @@ app1.put("/baskets/:id", (req, res) => {
   });
 })
 
-app1.delete("baskets/:id/products/:prodId", (req, res) => {
-  res.send(req.params + "item succesfully deleted")
-})
-
 //Read the content of a file and return a promise containing the content parsed as a javascript array
 async function getJsonArrayFromFile(filePath) {
   const data = await fs.readFile(filePath);
@@ -226,7 +166,7 @@ async function getJsonArrayFromFile(filePath) {
   return dataAsJson;
 }
 
-//Takes a javascript object and converts it to a json string. Then overrides the the file on the specified path
+//Takes a javascript object and converts it to a json string. Then overrides the  file on the specified path
 async function writeArrayToJsonFile(filePath, data) {
   try {
     await fs.writeFile(filePath, JSON.stringify(data));
